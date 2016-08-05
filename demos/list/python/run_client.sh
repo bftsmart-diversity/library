@@ -15,7 +15,7 @@ LIBCLSPTH=../../../lib
 # intermediarios python
 FACDCLSPTH=../../../diversity/python
 # dll libbftsmr.so
-DLLCLSPTH=../../../diversity/c/build
+DLLCLSPTH=../../../diversity/c/build/libbftsmr.so
 # mensagens compiladas
 PROTOCLSPTH=../protobuf/build
 
@@ -31,19 +31,14 @@ echo 'python path' $PYTHONPATH
 cd $1
 
 echo
-echo java -cp "$BASEFOLDER/$LIBCLSPTH/*:"\
-"$BASEFOLDER/../../../protobuf/build/protobuf-runtime.jar:"\
-"$BASEFOLDER/../protobuf/build/lista-proto.jar:"\
-"$BASEFOLDER/../../../diversity/java/build/bftsmart-diversity.jar:"\
-"$BASEFOLDER/build/bench_server.jar" bftsmart.diversity.demos.list.ServerLaunch $2 10000
+echo
 
-
-
-java -cp "$BASEFOLDER/$LIBCLSPTH/*:"\
-"$BASEFOLDER/../../../protobuf/build/protobuf-runtime.jar:"\
-"$BASEFOLDER/../protobuf/build/lista-proto.jar:"\
-"$BASEFOLDER/../../../diversity/java/build/bftsmart-diversity.jar:"\
-"$BASEFOLDER/build/bench_server.jar" bftsmart.diversity.demos.list.ServerLaunch $2 10000
-
+$BASEFOLDER/clientlist.py "-Djava.class.path=$BASEFOLDER/$LIBCLSPTH/BFT-SMaRt.jar:"\
+"$BASEFOLDER/$LIBCLSPTH/slf4j-api-1.5.8.jar:"\
+"$BASEFOLDER/$LIBCLSPTH/slf4j-jdk14-1.5.8.jar:"\
+"$BASEFOLDER/$LIBCLSPTH/netty-all-4.0.25.Final.jar:"\
+"$BASEFOLDER/$LIBCLSPTH/commons-codec-1.5.jar:"\
+"$BASEFOLDER/$LIBCLSPTH/core-0.1.4.jar:"\
+"$BASEFOLDER/../../../diversity/java/build/bftsmart-diversity.jar" $2 $BASEFOLDER/$DLLCLSPTH
 
 
