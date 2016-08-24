@@ -28,9 +28,9 @@ public class ServerWrapper extends DefaultSingleRecoverable {
     private int count;
     public ServerWrapper(int id) {
 try {
-        new ServiceReplica(id, this, this);
         executeOrderedTime = new Storage(interval);
         count = 0;
+        new ServiceReplica(id, this, this);
 } catch (Exception ex) {
 System.out.println(ex.getMessage());
 throw ex;
@@ -60,7 +60,7 @@ throw ex;
     }
 
     @Override
-    public byte[] executeUnordered(byte[] command, MessageContext msgCtx) {
+    public byte[] appExecuteUnordered(byte[] command, MessageContext msgCtx) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         //System.out.println("executeUnordered");
         return executeUnorderedNative(command);
