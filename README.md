@@ -20,5 +20,7 @@ bftsmart-diversity is a library for creating diversified applications in BFT-SMa
 2. That's all!
 
 ## Running
-Use the "run_demo.sh" script in each demo folder.
+Use the "run_server.sh" or "run_client.sh" script in each demo folder, where the first argument is the location of BFT-SMaRt config folder, and the second the replica id. For example:
+
+run_server.sh ../../../scripts 0
 
