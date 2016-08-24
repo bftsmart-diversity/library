@@ -62,18 +62,22 @@ class BFTList(BFTSMaRtServer):
             return rsp.SerializeToString()
 
     def invokeOrdered(self, input):
+        print "Chamado InvokeOrdered"
         return self.execute(input)
 
     def invokeUnordered(self, input):
+        print "Chamado InvokeUnordered"
         return self.execute(input)
 
     def getSnapshot(self):
+        print "Chamado getSnapshot"
         est = Estado_pb2.Estado()
         for i in self.state:
             est.lista.append(i)
         return est.SerializeToString()
 
     def installSnapshot(self, input):
+        print "Chamado installSnapshot"
         est = Estado_pb2.Estado()
         est.ParseFromString(input)
         self.state = list()

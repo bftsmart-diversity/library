@@ -72,7 +72,9 @@ class BFTSMaRtServer(BFTJVM):
         self.funccalltestCback = CALLTESTFUNC(functionCallTest)
         BFTJVM.libbft.implementfunctionCallTest(self.funccalltestCback)
 
+        print "Chamando StartServiceReplica"
         BFTJVM.libbft.startServiceReplica(int(id))
+        print "StartServiceReplica finalizado"
 
 
 
