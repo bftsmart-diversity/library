@@ -86,13 +86,24 @@ extern "C" {
         bftsmartdiversity::functionCallTestImplementation();
 	std::cout << "test success." << std::endl;
         }
+
+	for (int ii = 0; ii<tamanhoN; ii++) {
+		std::cout << nativeArray[ii] << " ";
+	}
+	std::cout << std::endl;
+
         int tamanhoS = bftsmartdiversity::executeOrderedImplementation((BFT_BYTE*) nativeArray,
                 tamanhoN,
                 &saida);
         if (DEBUG)
 	std::cout << "returned from executeOrderedImplementation" << std::endl;
 
-        jbyteArray arrayJava = env->NewByteArray(tamanhoS);
+        for (int ii = 0; ii<tamanhoS; ii++) {
+                std::cout << saida[ii] << " ";
+        }
+        std::cout << std::endl;
+
+	jbyteArray arrayJava = env->NewByteArray(tamanhoS);
         env->SetByteArrayRegion(arrayJava, 0, tamanhoS, (jbyte*) saida);
         env->ReleaseByteArrayElements(jbytes, nativeArray, JNI_ABORT);
 

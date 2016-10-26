@@ -2,6 +2,14 @@
 
 namespace bftsmart
 {
+
+/** Wrapper que possibilita a chamada de métodos da classe
+ *  C++ a partir de C. Não é possível chamar um método de
+ *  instância de C++ a partir de C, portanto a classe
+ *  FunctionCall faz um wrapper sobre esses métodos,
+ *  expondo métodos estáticos que então podem ser chamados
+ *  a partir de C.
+ */
 class FunctionCall {
 public:
     static bftsmart::BftSmartServer* instance;
@@ -35,7 +43,7 @@ void bftsmart::FunctionCall::callRelease(BYTE mem[]) {
 	free(mem);
 }
 
-bftsmart::BftSmartServer::BftSmartServer(int id, string classpath)
+bftsmart::BftSmartServer::BftSmartServer(string classpath)
 {
 	setClasspath(classpath.c_str());
 	carregarJvm();
@@ -47,7 +55,10 @@ bftsmart::BftSmartServer::BftSmartServer(int id, string classpath)
 	implementReleaseGetSnapshotBuffer(&bftsmart::FunctionCall::callRelease);
 	implementReleaseExecuteOrderedBuffer(&bftsmart::FunctionCall::callRelease);
 	implementReleaseExecuteUnorderedBuffer(&bftsmart::FunctionCall::callRelease);
+}
 
+void bftsmart::BftSmartServer::startServiceReplica(int id)
+{
 	startServiceReplica(id);
 }
 

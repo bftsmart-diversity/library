@@ -133,7 +133,8 @@ int main(int argc, char* argv[]) {
         return -1;
     }
 
-    replica r(atoi(argv[1]), argv[2]);
+    replica r(argv[2]);
+    r.startServiceReplica(atoi(argv[1]));
     return 0;
 }
 

@@ -9,5 +9,5 @@ public:
 	int getSnapshot(BYTE ** response);
 	void installSnapshot(BYTE state[], int size);
 
-        replica(int id, string classpath) : BftSmartServer(id , classpath) { }
+        replica(string classpath) : BftSmartServer(classpath) { }
 };

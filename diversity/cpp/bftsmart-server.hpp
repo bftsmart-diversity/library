@@ -13,8 +13,12 @@ public:
 	virtual void installSnapshot(BYTE state[], int size) = 0;
 
 protected:
-	BftSmartServer(int id, string classpath);
+	BftSmartServer(string classpath);
 	~BftSmartServer();
+
+public:
+	void startServiceReplica(int id);
+
 };
 
 }
